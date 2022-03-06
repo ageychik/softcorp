@@ -4,18 +4,26 @@
   "source": "index.pug",
   "version": "1.0.0",
   "description": "[FrontEnd] test SoftCorp",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build index.pug --public-url /softcorp/",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ageychik/softcorp.git"
+  },
+  "author": "Roman Ageychik <forwm.ru@gmail.com>",
+  "license": "ISC",
+  "homepage": "https://ageychik.github.io/softcorp",
   "dependencies": {
     "custom-select": "^1.1.15",
+    "gh-pages": "^3.2.3",
     "parcel": "^2.3.2"
   },
   "devDependencies": {
     "@parcel/transformer-pug": "^2.3.2",
     "@parcel/transformer-sass": "^2.3.2"
-  },
-  "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
-  },
-  "author": "Roman Ageychik",
-  "license": "ISC"
+  }
 }
