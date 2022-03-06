@@ -1,0 +1,16 @@
+include ../mixins/list.pug
+
+header.header
+    .container
+        .header__main
+            a.logo.header__logo(href="/")
+                include ../svg/logo.pug
+
+            nav.navigation(class="header__navigation")
+                .navigation__burger
+                +list('navigation-list', 'navigation', [
+                    {href:"#", mod: 'active', value: 'Бизнес'},
+                    {href:"#", value: 'О нас'},
+                    {href:"#", value: 'Цены'},
+                    {href:"#checkout", value: 'Оформить заказ'},
+                ])

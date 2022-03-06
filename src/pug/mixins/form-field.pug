@@ -1,0 +1,57 @@
+include ../mixins/button.pug
+
+mixin formField(className, fieldData)
+    case fieldData.type
+        when 'text'
+            label(class=className + '__label', class=className + "__label_" + fieldData.size)
+                input(type=fieldData.type,
+                    class=className + '__field',
+                    class=className + '__field_' + fieldData.type,
+                    placeholder=fieldData.placeholder,
+                    name=fieldData.name
+                    )
+        when 'email'
+            label(class=className + '__label', class=className + "__label_" + fieldData.size)
+                input(
+                    type=fieldData.type,
+                    class=className + '__field',
+                    class=className + '__field_' + fieldData.type,
+                    placeholder=fieldData.placeholder,
+                    name=fieldData.name
+                )
+        when 'select'
+            label(class=className + '__label', class=className + "__label_" + fieldData.size)
+                select(class=className + '__select', name=fieldData.name)
+                    option(value="") #{fieldData.placeholder}
+                    each selectOption in fieldData.options
+                        option(value=selectOption.value) #{selectOption.text}
+        when 'file'
+            label(class=className + '__label', class=className + "__label_" + fieldData.size)
+                span(class=className + '__file-btn')
+                    include ../svg/input-file.pug
+                    | #{fieldData.placeholder}
+                span
+                    input(
+                        type=fieldData.type,
+                        class=className + '__field',
+                        class=className + '__field_' + fieldData.type,
+                        name=fieldData.name
+                    )
+        when 'range'
+            label.range(class=className + '__label', class=className + "__label_" + fieldData.size)
+                span.range__row
+                    span.range__label #{fieldData.placeholder}
+                    span.range__value 0%
+                input.range__field(
+                    type=fieldData.type,
+                    placeholder=fieldData.placeholder,
+                    name=fieldData.name,
+                    min=fieldData.min || 0,
+                    max=fieldData.max || 100,
+                    value=fieldData.value || 0,
+                    step=fieldData.step || 1
+                )
+        when 'submit'
+            div(class=className + '__label', class=className + "__label_" + fieldData.size)
+                //input(type=fieldData.type, class=className + '__field', name=fieldData.name)
+                +button('form__submit', 'Отправить', 'submit', 'blue')

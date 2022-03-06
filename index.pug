@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="src/style.scss")
+    script(type="module", src="src/script.js")
+    title= "SoftCorp Test Task"
+  body
+    include ./src/pug/sections/header.pug
+    main
+      include ./src/pug/sections/hero.pug
+      include ./src/pug/sections/checkout.pug
+      include ./src/pug/sections/footer.pug

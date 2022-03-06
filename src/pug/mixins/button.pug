@@ -1,0 +1,5 @@
+mixin button(className, value, type, color, href)
+    if (type === 'button' || type === 'submit')
+        button(class=className + ' button-' + (color ? color : 'blue'), type=type) #{value}
+    else if (type === 'link')
+        a(href=href, class=className + ' button-' + (color ? color : 'blue')) #{value}

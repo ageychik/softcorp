@@ -1,0 +1,20 @@
+include ../mixins/button.pug
+
+section.hero
+    .container
+        .hero__main
+            h1.hero__title
+                span Lorem ipsum
+                |  dolor sit
+                |  amet consectetur
+                |
+                span adipiscing
+            .hero__text-block
+                p At vero eos et accusamus et iusto odio dignissimos ducimus!
+                ul
+                    li Totam rem aperiam eaque ipsa
+                    li Sit voluptatem accusantium doloremque laudantium
+                    li Sed ut perspiciatis, unde omnis iste natus error
+            .hero__button-block
+                +button('hero__button', 'заказать', 'button', 'blue')
+                +button('hero__button', 'подробнее', 'link', 'white', '#')

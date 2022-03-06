@@ -1,0 +1,6 @@
+include ../mixins/form-field.pug
+
+mixin form(className, formFields)
+    form.form(class=className + '__form', action="#")
+        each field in formFields
+            +formField('form', field)

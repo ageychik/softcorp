@@ -1,0 +1,48 @@
+include ../svg/checkout-sprite.pug
+include ../mixins/form.pug
+
+mixin checkuotWais(checkoutData)
+    each value, icon in checkoutData
+        article.wais__item
+            .wais__icon
+                +checkoutIcon(icon)
+
+            p.wais__text #{value}
+
+
+section.checkout(id='checkout')
+    .container
+        .checkout__main
+            .checkout__title
+                h2 Оформление
+                    |
+                    span Заказа
+                p.checkout__subtitle Перед заполнением формы ознакомьтесь с нашей схемой работы!
+
+            .checkout__wais.wais
+                +checkuotWais({
+                    'glass' : 'Lorem ipsum dolor sit amet',
+                    'percent' : 'Сonsecteturadipiscing elit',
+                    'file' : 'Sed do eiusmod tempor',
+                    'mail' : 'Esse cillum dolore eu fugiat',
+                    'money' : 'Excepteur sint occaecat cupidatat non proident'
+                })
+            +form('checkout', [
+                {type: 'select', size: 'small', name: 'system-type', placeholder: 'Выберите тип системы', options: [
+                    {value: 'option-1', text: 'Sed ut perspiciatis'},
+                    {value: 'option-2', text: 'Nemo enim ipsam'},
+                    {value: 'option-3', text: 'Et harum quidem'},
+                    {value: 'option-4', text: 'Temporibus autem'},
+                    {value: 'option-5', text: 'Itaque earum rerum'},
+                    {value: 'option-6', text: 'Sed ut perspiciatis'},
+                    {value: 'option-7', text: 'Nemo enim ipsam'},
+                    {value: 'option-8', text: 'Et harum quidem'},
+                    {value: 'option-9', text: 'Temporibus autem'},
+                    {value: 'option-10', text: 'Itaque earum rerum'},
+                ]},
+                {type: 'email', size: 'small', name: 'email', placeholder: 'Ваш e-mail'},
+                {type: 'text', size: 'small', name: 'user-name', placeholder: 'Ваше имя'},
+                {type: 'range', min: '0', max: '100', value: "75", size: 'medium', name: 'range', placeholder: 'Sed ut perspiciatis, unde omnis iste natus'},
+                {type: 'file', size: 'small', name: 'file', placeholder: "Прикрепить файл"},
+                {type: 'submit', size: 'full', placeholder: "Отправить"},
+            ])

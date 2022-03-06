@@ -1,0 +1,89 @@
+.custom-select {
+  position: relative;
+  select {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &_open &__dropdown{
+    max-height: 10.7em;
+    overflow-y: auto;
+  }
+  &_open &__opener {
+    color: $color-white;
+    border-radius: $brdz-3 $brdz-3 0 0;
+    background: rgba($color-focus, .85);
+    &:after {
+      transform: rotate(-225deg);
+    }
+  }
+  &__dropdown {
+    max-height: 0;
+    transition: max-height .5s, overflow-y .15s .5s;
+    overflow: hidden;
+    background-color: $color-primary;
+    border: 1px solid $color-focus;
+    border-radius: 0 0 $brdz-3 $brdz-3;
+    padding: 0 10px;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    width: 100%;
+    &::-webkit-scrollbar {
+      background: $color-focus;
+      width: 14px;
+      border-radius: 13px;
+      background-clip: padding-box;
+      border: 4px solid transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 0 10px $color-blue-light;
+      width: 14px;
+      border-radius: 13px;
+      background-clip: padding-box;
+      border: 4px solid transparent;
+      &:hover,
+      &:active{
+        box-shadow: inset 0 0 0 10px $color-blue-dark;
+      }
+    }
+  }
+  &__opener {
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    background: rgba($color-white, 0.85);
+    border-radius: $brdz-3;
+    color: $color-primary;
+    @include font(18, 18);
+    padding: 12px;
+    position: relative;
+    &:after {
+      content: '';
+      width: 5px;
+      height: 5px;
+      transform: rotate(-45deg);
+      border-left: 1px solid;
+      border-bottom: 1px solid;
+      transition: all .15s;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 16px;
+      pointer-events: none;
+      margin: auto;
+    }
+  }
+  &__option {
+    @include font(18, 34, 400);
+    color: $color-white;
+    &_focus {
+      color: $color-blue-select;
+    }
+    &_selected{
+      display: none;
+    }
+  }
+}

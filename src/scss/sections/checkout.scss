@@ -1,0 +1,34 @@
+.checkout {
+  background: {
+    color: $color-primary;
+    image: url('images/checkout-background.png');
+    size: cover;
+    position: center;
+    attachment: fixed;
+  }
+  padding: 120px 0 150px;
+
+  &__title {
+    text-align: center;
+    margin-bottom: $space-X;
+    @media (max-width: $mobile) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__subtitle {
+    color: $color-bbb;
+    @include font(18, 22);
+    @media (max-width: $mobile) {
+      font-size: 14px;
+    }
+  }
+
+  &__wais {
+    margin-bottom: $space-X;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 60px 0;
+  }
+}

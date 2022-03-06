@@ -1,0 +1,21 @@
+{
+  "name": "softcorp",
+  "browserslist": "last 2 versions",
+  "source": "index.pug",
+  "version": "1.0.0",
+  "description": "[FrontEnd] test SoftCorp",
+  "dependencies": {
+    "custom-select": "^1.1.15",
+    "parcel": "^2.3.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-pug": "^2.3.2",
+    "@parcel/transformer-sass": "^2.3.2"
+  },
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "Roman Ageychik",
+  "license": "ISC"
+}

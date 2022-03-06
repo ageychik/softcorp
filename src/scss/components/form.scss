@@ -1,0 +1,80 @@
+.form {
+  @include flex(flex-end, 'none', wrap, $space);
+
+  &__label {
+    &_small {
+      @include widthWithGap(1, 3);
+    }
+
+    &_medium {
+      @include widthWithGap(2, 3);
+    }
+
+    &_full {
+      @include widthWithGap(3, 3);
+      text-align: center;
+    }
+  }
+
+  &__field {
+    width: 100%;
+    @include font();
+
+    &::placeholder {
+      color: $color-primary;
+    }
+
+    &_email,
+    &_select,
+    &_text {
+      background: rgba($color-white, 0.85);
+      border: 1px solid $color-white;
+      border-radius: $brdz-3;
+      @include font(18, 18);
+      padding: 12px;
+
+      &:focus {
+        color: $color-white;
+        background: rgba($color-focus, .85);
+        border-color: transparent;
+
+        &::placeholder {
+          color: $color-white;
+        }
+      }
+    }
+
+    &_file {
+      display: none;
+    }
+  }
+
+  &__file-btn {
+    background: $color-white;
+    border: 2px solid $color-blue-light;
+    border-radius: $brdz-3;
+    padding: 12px 0;
+
+    svg {
+      transition: all .15s;
+      fill: $color-primary;
+    }
+
+    @include hoverAnimate() {
+      background: $color-blue-dark;
+      color: $color-white;
+      svg {
+        fill: $color-white;
+      }
+    }
+  ;
+    @include flex(center, center, nowrap, 10px);
+    text-transform: uppercase;
+  }
+
+  &__submit {
+    @include widthWithGap(1, 3);
+    @include font(15, 18, 600);
+    margin: 20px auto 0;
+  }
+}

@@ -1,0 +1,67 @@
+.hero {
+  padding: 200px 0;
+  background: {
+    image: url('images/hero-background.jpg');
+    size: cover;
+    position: right;
+  }
+  &__main {
+    max-width: 780px;
+    @include flex(flex-start, center, nowrap, $space-X, column);
+    @media (max-width: $mobile) {
+      gap: 20px;
+      padding: 20px;
+      background: rgba($color-white, .35);
+      border-radius: 20px;
+    }
+  }
+
+  &__text-block{
+    color: $color-black;
+    @include font(20, 24);
+
+    p {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        padding-left: 25px;
+        margin-bottom: 5px;
+        position: relative;
+        &:before {
+          content: '';
+          width: 5px;
+          height: 2px;
+          background: $color-black;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto calc((25px - 5px) / 2);
+        }
+      }
+    }
+
+    @media (max-width: $mobile) {
+      font-size: 16px;
+    }
+  }
+
+  &__button-block {
+    @include flex('none', 'none', nowrap, $space);
+    align-self: stretch;
+  }
+
+  &__button {
+    flex: 1;
+    max-width: 183px;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 120px 0 100px;
+  }
+}

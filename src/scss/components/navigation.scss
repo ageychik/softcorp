@@ -1,0 +1,121 @@
+.navigation {
+  align-self: center;
+
+  &__burger {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: $space;
+    width: $space;
+    height: $space;
+    z-index: 1;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: $color-white;
+      margin: auto;
+      transition: all .15s .05s;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      border-top: 3px solid $color-white;
+      border-bottom: 3px solid $color-white;
+      height: 100%;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      box-sizing: border-box;
+      transition: transform .15s, height .15s .05s;
+    }
+
+    &_open {
+      &:before {
+        transform: rotate(-45deg);
+      }
+      &:after {
+        height: 3px;
+        background: $color-white;
+        border: none;
+        transform: rotate(45deg);
+        transition: height .05s, transform .15s .05s;
+
+      }
+      & + .navigation {
+        &__list {
+          transform: translateY(0);
+          pointer-events: all;
+
+          .navigation__item {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+
+
+      }
+    }
+
+    @media (max-width: $mobile) {
+      display: block;
+    }
+  }
+
+  &__list {
+    @include flex(center, 'none', nowrap, $space * 2);
+    @media (max-width: $mobile) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(16, 16, 29, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transform: translateY(-100%);
+      pointer-events: none;
+      transition: all .15s;
+    }
+  }
+
+  &__item {
+    @media (max-width: $mobile) {
+      transform: translateX(35%);
+      opacity: 0;
+      transition: all .25s .15s;
+    }
+  }
+
+  &__link {
+    @include font(13, 15, 600);
+    display: block;
+    text-transform: uppercase;
+
+    &_active {
+      cursor: default;
+      color: $color-blue-links;
+    }
+
+    &:not(&_active) {
+      @include hoverAnimate() {
+        color: $color-blue-dark;
+      }
+    }
+
+    @media (max-width: $mobile) {
+      font-size: 25px;
+    }
+  }
+}

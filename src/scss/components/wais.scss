@@ -1,0 +1,88 @@
+.wais {
+  @include flex();
+
+  &__item {
+    flex: 1;
+    @include flex(center, 'none', nowrap, 0, column);
+    overflow: hidden;
+    &:first-of-type {
+      & > div {
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    &:last-of-type {
+      & > div {
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    @media (max-width: $mobile) {
+      background: $color-blue-light;
+      border: 5px solid $color-blue-dark;
+      border-radius: 50px;
+      flex-direction: row;
+      &:nth-child(odd) {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  &__icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: $color-blue-light;
+    border: 5px solid $color-blue-dark;
+    @include flex(center, center);
+    margin-bottom: 20px;
+    position: relative;
+    &:before,
+    &:after {
+      content: "";
+      padding-bottom: calc((100% + 30px) * (6 / 110));
+      width: 125%;
+      margin: 0 15px;
+      position: absolute;
+      background: {
+        image: url('images/dots.svg');
+        size: contain;
+        repeat: no-repeat;
+      }
+    }
+
+    &:before {
+      right: 100%;
+    }
+
+    &:after {
+      left: 100%;
+    }
+    @media (max-width: $mobile) {
+      background: transparent;
+      border-color: transparent;
+      margin: 0;
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  &__text {
+    @include font(16, 19);
+    color: $color-white;
+    text-align: center;
+    padding: 0 15px;
+    flex: 1;
+  }
+
+  @media (max-width: $mobile) {
+   flex-direction: column;
+    gap: 20px;
+  }
+}

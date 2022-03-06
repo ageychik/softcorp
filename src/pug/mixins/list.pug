@@ -1,0 +1,7 @@
+mixin list(className, parentClass, listData)
+    ul(class=parentClass + '__list')
+        each itm in listData
+            li(class=parentClass && parentClass + '__item')
+                - const classLink = parentClass + '__link';
+                - const mod = itm.mod ? classLink + '_' + itm.mod : '';
+                a(class=classLink, class=mod, href=itm.href ) #{itm.value}

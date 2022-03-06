@@ -1,0 +1,45 @@
+@mixin font($fs: 18, $lh: 22, $fw: 400) {
+  line-height: $lh / $fs;
+  font: {
+    size: $fs + px;
+    weight: $fw;
+  };
+};
+
+@mixin widthWithGap($size: 3, $cols: 3, $gap: $space){
+  width: calc(100% / (#{$cols} / #{$size}) - #{$gap} * (#{$cols} - #{$size}) / #{$cols});
+  @media (max-width: $mobile) {
+    width: 100%;
+  }
+};
+
+@mixin flex($ai: 'none', $jc: 'none', $fw: nowrap, $gap: 0, $dir: 'none'){
+  display: flex;
+  flex-wrap: $fw;
+
+  @if $dir != 'none' {
+    flex-direction: $dir;
+  }
+
+  @if $ai != 'none' {
+    align-items: $ai;
+  }
+
+  @if $jc != 'none' {
+    justify-content: $jc;
+  }
+
+  @if $gap > 0 {
+    gap: $gap;
+  }
+};
+
+@mixin hoverAnimate($props: all, $speed: .15s) {
+  transition: $props $speed;
+  cursor: pointer;
+  &:hover {
+    @media (min-width: $tablet) {
+      @content;
+    }
+  }
+}

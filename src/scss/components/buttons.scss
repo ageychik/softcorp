@@ -1,0 +1,31 @@
+@mixin buttonStyles ($border-color, $bg-color, $text-color){
+  border: 1px solid $border-color;
+  display: block;
+  background: $bg-color;
+  color: $text-color;
+  border-radius: $brdz-4;
+  padding: 15px 0;
+  text-align: center;
+  text-transform: uppercase;
+
+  @media (max-width: $mobile) {
+    padding: 10px 0;
+    font-size: 14px;
+  }
+}
+
+.button-blue {
+  @include buttonStyles($color-white, $color-blue-light, $color-white);
+  @include hoverAnimate(){
+    background: $color-blue-dark;
+  };
+}
+
+.button-white {
+  @include buttonStyles($color-gray, $color-white, $color-primary);
+  @include hoverAnimate(){
+    border-color: transparent;
+    background-color: rgba($color-gray, .7);
+    color: $color-white;
+  };
+}
